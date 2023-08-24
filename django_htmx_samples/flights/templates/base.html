@@ -7,8 +7,21 @@
 </head>
 <body>
 
-<content>
-     {% block content %}{% endblock %}
-</content>
+        <nav aria-label="breadcrumb">
+            <ul class="nav-list" hx-boost="true">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'index' %}">Home</a></li>
+            </ul>
+        </nav>
+
+<main id="pageContent" class="container">
+    <section>
+        {% block content %}{% endblock %}
+    </section>
+</main>
+
+<script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
 </body>
 </html>
