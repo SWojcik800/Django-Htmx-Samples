@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}About Us{% endblock %}
-
 {% block content %}
-    <h4>Flights</h2>
-    <section hx-get="{% url 'flights-list' %}" hx-trigger="load">
+    <h4>Flights</h4>
+
+    <section create-btn-container hx-get="{% url 'flights-create-btn' %}" hx-trigger="flight-created from:body, form-canceled">
+        <a href="#" 
+        create-button
+        hx-get="{% url 'flights-create' %}"
+        hx-swap="outerHTML"
+        role="button">Create</a>
+    </section>
+    
+
+    <section flights-container hx-get="{% url 'flights-list' %}" hx-trigger="load">
 
     </section>
+
 {% endblock %}

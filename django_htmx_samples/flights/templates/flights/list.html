@@ -1,11 +1,21 @@
-{% for item in items %}
-<article>
-    <header> {{item.plane_name}} - {{item.departure}} ({{item.departure_time}}) - {{item.destination}} ({{item.arrival_time}})</header>
-    {% if item.additional_information is not None %}
-    <details>
-        <summary>Additional information:</summary>
-        <p>{{item.additional_information}}</p>
-    </details>
-    {% endif %}
-</article>
-{% endfor %}
+<section flights-list>
+    {% for item in items %}
+
+    <article>
+        <header> {{item.plane_name}} - {{item.departure}} ({{item.departure_time}}) - {{item.destination}} ({{item.arrival_time}})</header>
+        {% if item.additional_information is not None %}
+        <details>
+            <summary>Additional information:</summary>
+            <p>{{item.additional_information}}</p>
+        </details>
+        {% endif %}
+    </article>
+    {% endfor %}
+    
+    {% for page in pages %}
+    <a 
+    hx-boost="true" 
+    hx-target="section[flights-list]"
+    href="{% url 'flights-list' page_index=page %}" class="{% if page != current_page %} outline {% endif %}" role="button">{{page}}</a>
+    {% endfor %}
+</section>
