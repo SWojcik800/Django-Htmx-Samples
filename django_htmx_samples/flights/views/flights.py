@@ -8,15 +8,29 @@ class Flights:
     def index(request):
         return render(request, "flights/index.html")
     
-    def list(request, page_index = 1, page_size = 10):
+    def list(request):
+        page_index = int(request.GET.get('page_index', '1'))
+        page_size = 10
+        keyword = request.GET.get('keyword')
         offset = (page_index-1) * page_size
         limit = page_size
 
-        flights = Flight.objects.order_by('-departure_time')[offset:offset + limit]
-        total_count = Flight.objects.count()
+        query = Flight.objects
+
+        if keyword is not None:
+            query = query.filter(plane_name__startswith=keyword)
+
+        flights = query.order_by('-departure_time')[offset:offset + limit]
+        total_count = query.count()
 
         pages = (total_count + page_size - 1) // page_size
-        return render(request, 'flights/list.html', {"items": flights, "pages": range(1,pages+1), "current_page": page_index })
+        return render(request, 'flights/list.html',
+                       {
+                        "items": flights, 
+                        "pages": range(1,pages+1),
+                        "current_page": page_index,
+                        "keyword": keyword
+                        })
     
     def create(request):
 

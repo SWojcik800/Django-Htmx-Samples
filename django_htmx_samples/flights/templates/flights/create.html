@@ -1,8 +1,9 @@
 <article create-flight-form>
   <form 
     hx-post="{% url 'flights-create' %}" 
-    hx-target="article[create-flight-form]" 
-    hx-swap="outerHTML"
+    hx-target="[create-flight-form]" 
+    hx-swap="delete"
+    hx-on::after-request="htmx.trigger('flight-created')"
     >
     {% csrf_token %}
     <label for="plane_name">

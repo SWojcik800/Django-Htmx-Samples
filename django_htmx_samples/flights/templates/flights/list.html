@@ -1,12 +1,16 @@
 <section flights-list>
+
     {% for item in items %}
     {% include 'flights/list-item.html' %}
     {% endfor %}
     
     {% for page in pages %}
     <a 
-    hx-boost="true" 
-    hx-target="section[flights-list]"
-    href="{% url 'flights-list' page_index=page %}" class="{% if page != current_page %} outline {% endif %}" role="button">{{page}}</a>
+    href="#"
+    hx-get="{% url 'flights-list' %}"
+    hx-target="[flights-container]"
+    hx-trigger="click, flight-created from:body"
+    hx-vals='{"page_index": "{{page}}", "keyword": "{% if keyword is not None %}{{keyword}}{% endif %}" }'
+    class="{% if page != current_page %} outline {% endif %}" role="button">{{page}}</a>
     {% endfor %}
 </section>

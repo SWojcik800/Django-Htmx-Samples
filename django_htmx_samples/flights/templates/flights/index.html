@@ -3,11 +3,18 @@
 {% block title %}About Us{% endblock %}
 {% block content %}
     <h4>Flights</h4>
+    
 
     <section create-btn-container hx-get="{% url 'flights-create-btn' %}" hx-trigger="flight-created from:body, form-canceled">
         {% include 'flights/create-btn.html' %}
     </section>
     
+    <input name='keyword' value="{% if keyword is not None %}{{keyword}}{% endif %}" 
+    hx-get="{% url 'flights-list' %}"
+    hx-target="[flights-container]"
+    hx-vals='{"page_index": "{{page}}", "keyword": (this.value) }'
+    hx-trigger="keyup changed delay:500ms, search" 
+    type="search" placeholder="Keyword"/> 
 
     <section flights-container hx-get="{% url 'flights-list' %}" hx-trigger="load">
 
