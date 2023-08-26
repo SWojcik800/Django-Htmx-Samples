@@ -1,15 +1,6 @@
 <section flights-list>
     {% for item in items %}
-
-    <article>
-        <header> {{item.plane_name}} - {{item.departure}} ({{item.departure_time}}) - {{item.destination}} ({{item.arrival_time}})</header>
-        {% if item.additional_information is not None %}
-        <details>
-            <summary>Additional information:</summary>
-            <p>{{item.additional_information}}</p>
-        </details>
-        {% endif %}
-    </article>
+    {% include 'flights/list-item.html' %}
     {% endfor %}
     
     {% for page in pages %}

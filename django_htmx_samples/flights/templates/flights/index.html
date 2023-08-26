@@ -5,11 +5,7 @@
     <h4>Flights</h4>
 
     <section create-btn-container hx-get="{% url 'flights-create-btn' %}" hx-trigger="flight-created from:body, form-canceled">
-        <a href="#" 
-        create-button
-        hx-get="{% url 'flights-create' %}"
-        hx-swap="outerHTML"
-        role="button">Create</a>
+        {% include 'flights/create-btn.html' %}
     </section>
     
 
