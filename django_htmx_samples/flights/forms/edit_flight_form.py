@@ -1,13 +1,9 @@
-from typing import Any, Dict, Mapping, Optional, Type, Union
 from django import forms
-from django.core.files.base import File
-from django.db.models.base import Model
-from django.forms.utils import ErrorList
 
 from flights.models.flight import Flight
 
 
-class CreateFlightForm(forms.ModelForm):
+class EditFlightForm(forms.ModelForm):
     departure_time = forms.DateTimeField(
         required=True,
         widget=forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}),

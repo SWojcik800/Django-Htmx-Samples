@@ -1,0 +1,13 @@
+<article edit-flight-form>
+    <form 
+      hx-post="{% url 'flights-edit' id=id %}" 
+      hx-target="[edit-flight-form]" 
+      hx-swap="outerHTML"
+      >
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" />
+    </form>
+    <button>Cancel</button>
+  </article>
+  

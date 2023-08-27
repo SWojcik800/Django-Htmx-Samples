@@ -1,5 +1,10 @@
-<article>
+<article id="list-item-{{item.id}}">
     <header> {{item.plane_name}} - {{item.departure}} ({{item.departure_time}}) - {{item.destination}} ({{item.arrival_time}})</header>
+    <a href="#" 
+        hx-get="{% url 'flights-edit' id=item.id %}"
+        hx-target="#list-item-{{item.id}}"
+        hx-swap="outerHTML"
+        role="button">Edit</a>
     {% if item.additional_information is not None %}
     <details>
         <summary>Additional information:</summary>
