@@ -35,14 +35,18 @@ class Flights:
     def create(request):
 
         if request.method == 'GET':
+            form = CreateFlightForm()
             return render(request, 'flights/create.html')
         form = CreateFlightForm(request.POST)
 
         if form.is_valid():
             createdFlight = form.save()
             response = render(request, 'flights/list-item.html', {"item": createdFlight})
-            response['HX-Trigger'] =  'flight-created'
+            response['HX-Trigger'] = 'flight-created'
+            response['HX-Reswap'] = 'delete'
             return response
+        
+        return render(request, 'flights/create.html', {"form": form})
         
     def create_btn(request):
         return render(request, 'flights/create-btn.html')
