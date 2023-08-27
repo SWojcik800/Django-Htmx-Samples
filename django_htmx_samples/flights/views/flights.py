@@ -65,5 +65,7 @@ class Flights:
         
         return render(request, 'flights/edit.html', {"form": form, "id": editedFlight.pk})
 
-
+    def get(request, id):
+        flight = get_object_or_404(Flight, pk=id)
+        return render(request, 'flights/list-item.html', {"item": flight, "id": flight.pk})
         

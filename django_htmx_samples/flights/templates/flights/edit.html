@@ -8,6 +8,10 @@
       {{form}}
       <input type="submit" />
     </form>
-    <button>Cancel</button>
+    <button 
+        hx-get="{% url 'flights-get' id=id %}" 
+        hx-target="[edit-flight-form]"
+        hx-swap="outerHTML"
+        >Cancel</button>
   </article>
   
