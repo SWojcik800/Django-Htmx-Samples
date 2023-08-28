@@ -1,4 +1,4 @@
-<article edit-flight-form>
+<article edit-flight-form class="fade-in">
     <form 
       hx-post="{% url 'flights-edit' id=id %}" 
       hx-target="[edit-flight-form]" 
@@ -6,12 +6,17 @@
       >
       {% csrf_token %}
       {{form}}
-      <input type="submit" />
-    </form>
-    <button 
+      <div class="grid">
+        <input role="button" type="submit" value="Save" />
+        <button 
         hx-get="{% url 'flights-get' id=id %}" 
         hx-target="[edit-flight-form]"
         hx-swap="outerHTML"
+        role="button"
+        class="secondary"
         >Cancel</button>
+      </div>
+    </form>
+    
   </article>
   

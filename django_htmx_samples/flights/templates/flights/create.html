@@ -1,4 +1,4 @@
-<article create-flight-form>
+<article create-flight-form class="fade-in">
   <form 
     hx-post="{% url 'flights-create' %}" 
     hx-target="[create-flight-form]" 
@@ -6,8 +6,11 @@
     >
     {% csrf_token %}
     {{form}}
-    <input type="submit" />
-  </form>
-  <button 
+    <div class="grid">
+      <input type="submit" role="button" value="Save" />
+    <button class="secondary" role="button"
     onclick="htmx.trigger('section[create-btn-container]','form-canceled')">Cancel</button>
+    </div>
+    
+  </form>
 </article>
