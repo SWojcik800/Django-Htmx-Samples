@@ -1,0 +1,19 @@
+{% for item in items %}
+
+{% if forloop.last %}
+<tr hx-get="{% url 'url_shortcuts_rows' %}" hx-vals='{"page_index": "{{next_page}}"}' hx-trigger="revealed"
+    hx-swap="afterend">
+    <td>{{item.name}}</td>
+    <td>{{item.url}}</td>
+    <td>{{item.valid_to}}</td>
+</tr>
+{% else %}
+<tr>
+    <td>{{item.name}}</td>
+    <td>{{item.url}}</td>
+    <td>{{item.valid_to}}</td>
+</tr>
+{% endif %}
+
+
+{% endfor %}

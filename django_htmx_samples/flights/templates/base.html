@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <title>{% block title %}My Website{% endblock %}</title>
@@ -7,6 +7,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
     />
+    {% block styles %}
+
+    {% endblock %}
   </head>
   <body>
     <style>
@@ -36,9 +39,7 @@
     <nav aria-label="breadcrumb" class="container">
       <ul class="nav-list" hx-boost="true">
         <li><a href="{% url 'index' %}">Flights</a></li>
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'url_shortcuts_index' %}">Url shortcuts</a></li>
       </ul>
     </nav>
 

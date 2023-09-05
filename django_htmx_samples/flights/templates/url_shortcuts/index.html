@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Url shortcuts{% endblock %}
+{% block content %}
+    <h4>Url shortcuts</h4>
+
+    <section url-shortcuts-container>
+        <table role="grid">
+            <tr 
+            id="url-shortcuts-table-header"
+            hx-get="{% url 'url_shortcuts_rows' %}"
+            hx-trigger="load"
+            hx-swap="afterend">
+                <th>Name</th>
+                <th>Url</th>
+                <th>Valid to</th>
+            </tr>
+        </table>
+    </section>
+{% endblock %}
